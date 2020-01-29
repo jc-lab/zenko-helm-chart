@@ -10,6 +10,10 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.lifecycle.bucketProcessor.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "backbeat.name" . }}-lifecycle
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:

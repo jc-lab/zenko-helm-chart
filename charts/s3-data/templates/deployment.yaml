@@ -9,6 +9,10 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "s3-data.name" . }}
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
