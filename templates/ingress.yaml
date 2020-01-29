@@ -1,6 +1,6 @@
 {{- if .Values.ingress.enabled -}}
 {{- $serviceName := printf "%s-%s" .Release.Name "cloudserver" | trunc 63 | trimSuffix "-" -}}
-apiVersion: extensions/v1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "zenko.fullname" . }}
