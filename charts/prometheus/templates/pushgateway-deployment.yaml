@@ -1,5 +1,5 @@
 {{- if .Values.pushgateway.enabled -}}
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
@@ -11,11 +11,6 @@ metadata:
   name: {{ template "prometheus.pushgateway.fullname" . }}
 spec:
   replicas: {{ .Values.pushgateway.replicaCount }}
-  selector:
-    matchLabels:
-      app: {{ template "prometheus.name" . }}
-      component: "{{ .Values.pushgateway.name }}"
-      release: {{ .Release.Name }}
   template:
     metadata:
     {{- if .Values.pushgateway.podAnnotations }}
