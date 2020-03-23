@@ -13,9 +13,7 @@ spec:
   selector:
     matchLabels:
       app: {{ template "backbeat.name" . }}-gc
-      chart: {{ template "backbeat.chart" . }}
       release: {{ .Release.Name }}
-      heritage: {{ .Release.Service }}
   template:
     metadata:
       labels:

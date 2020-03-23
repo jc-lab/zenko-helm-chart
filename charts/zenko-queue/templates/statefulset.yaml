@@ -17,9 +17,7 @@ spec:
   selector:
     matchLabels:
       app: {{ include "kafka.name" . }}
-      chart: {{ .Chart.Name }}-{{ .Chart.Version }}
       release: {{ .Release.Name }}
-      heritage: {{ .Release.Service }}
   template:
     metadata:
 {{- if and .Values.prometheus.jmx.enabled  (not .Values.prometheus.operator.enabled) }}

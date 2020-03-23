@@ -14,9 +14,7 @@ spec:
   selector:
     matchLabels:
       app: {{ template "prometheus.name" . }}
-      chart: {{ .Chart.Name }}-{{ .Chart.Version }}
       component: "{{ .Values.pushgateway.name }}"
-      heritage: {{ .Release.Service }}
       release: {{ .Release.Name }}
   template:
     metadata:
