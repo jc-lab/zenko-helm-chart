@@ -10,6 +10,12 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.garbageCollector.consumer.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "backbeat.name" . }}-gc
+      chart: {{ template "backbeat.chart" . }}
+      release: {{ .Release.Name }}
+      heritage: {{ .Release.Service }}
   template:
     metadata:
       labels:

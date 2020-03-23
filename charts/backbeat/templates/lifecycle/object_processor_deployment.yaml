@@ -10,6 +10,12 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.lifecycle.objectProcessor.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "backbeat.name" . }}-lifecycle
+      chart: {{ template "backbeat.chart" . }}
+      release: {{ .Release.Name }}
+      heritage: {{ .Release.Service }}
   template:
     metadata:
       labels:

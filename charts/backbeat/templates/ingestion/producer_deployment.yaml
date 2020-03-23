@@ -11,6 +11,12 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.ingestion.producer.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "backbeat.name" . }}-ingestion
+      chart: {{ template "backbeat.chart" . }}
+      release: {{ .Release.Name }}
+      heritage: {{ .Release.Service }}
   template:
     metadata:
       labels:

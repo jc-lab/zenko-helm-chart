@@ -9,6 +9,12 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replication.statusProcessor.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "backbeat.name" . }}-replication
+      chart: {{ template "backbeat.chart" . }}
+      release: {{ .Release.Name }}
+      heritage: {{ .Release.Service }}
   template:
     metadata:
       {{- if not .Values.global.orbit.enabled }}

@@ -15,6 +15,13 @@ metadata:
   name: {{ template "prometheus.kubeStateMetrics.fullname" . }}
 spec:
   replicas: {{ .Values.kubeStateMetrics.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "prometheus.name" . }}
+      chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+      component: "{{ .Values.kubeStateMetrics.name }}"
+      heritage: {{ .Release.Service }}
+      release: {{ .Release.Name }}
   template:
     metadata:
     {{- if .Values.kubeStateMetrics.podAnnotations }}
