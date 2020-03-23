@@ -1,6 +1,6 @@
 {{- if .Values.global.orbit.enabled -}}
 {{- if .Values.ingestion.enabled -}}
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "backbeat.fullname" . }}-ingestion-producer
